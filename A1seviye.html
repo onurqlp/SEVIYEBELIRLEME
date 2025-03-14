@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AYDA Ankara Yabancı Dil Akademisi - Almanca A2 Kuru Geçiş Sınavı</title>
+    <title>AYDA Ankara Yabancı Dil Akademisi - Almanca A1 Kuru Geçiş Sınavı</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,7 +19,7 @@
 
         header {
             padding: 10px;
-            background-color: #1877F2;
+            background-color: #1877F2; /* Üst şerit mavi */
             text-align: center;
             color: white;
         }
@@ -137,7 +137,7 @@
         .fixed-buttons {
             position: fixed;
             top: 50%;
-            right: 10px;
+            right: 10px; /* Sağda sabit */
             transform: translateY(-50%);
             display: flex;
             flex-direction: column;
@@ -147,7 +147,7 @@
         .fixed-buttons a {
             padding: 12px 25px;
             font-size: 1rem;
-            background-color: #2C5282;
+            background-color: #2C5282; /* Koyu mavi butonlar */
             color: white;
             border: none;
             border-radius: 5px;
@@ -158,7 +158,7 @@
         }
 
         .fixed-buttons a:hover {
-            background-color: #144682;
+            background-color: #144682; /* Hover'da daha koyu mavi */
             transform: translateY(-3px);
         }
 
@@ -205,7 +205,7 @@
 
     <!-- Yeni Başlık ve Açıklama -->
     <div class="container">
-        <h2>Almanca A2 Seviye Belirleme Sınavı</h2>
+        <h2>Almanca A1 Seviye Belirleme Sınavı</h2>
         <p>Bu sınav yaklaşık 50 dakika sürecektir ve Almanca dil seviyenizi belirlemek için tasarlanmıştır.</p>
         <p>Sınav sonunda seviyenize göre uygun kurslar önerilecektir.</p>
     </div>
@@ -221,6 +221,7 @@
             <label for="email">E-posta:</label>
             <input type="email" id="email" name="email" required><br><br>
 
+            <!-- Opsiyonel WhatsApp Grup adı alanı -->
             <label for="whatsapp">Katıldığınız kursun WhatsApp Grup adı (Opsiyonel):</label>
             <input type="text" id="whatsapp" name="whatsapp"><br><br>
 
@@ -231,7 +232,7 @@
 
     <!-- Test ve Form -->
     <div class="container hidden" id="test-container">
-        <iframe id="testIframe" src="https://www.cornelsen.de/sites/einstufungstest/EINSTUFUNGSTEST_DAF_A2_DT_86428/index.html"></iframe>
+        <iframe id="testIframe" src="https://www.cornelsen.de/sites/einstufungstest/EINSTUFUNGSTEST_DAF_A1_DT_48755/index.html"></iframe>
 
         <!-- Geri Sayım -->
         <div id="timer">50:00</div>
@@ -301,39 +302,51 @@
         }
 
         function startCountdown(duration) {
-            let timeRemaining = duration;
+            let timeRemaining = duration; // 50 dakika = 3000 saniye
             countdown = setInterval(function () {
                 let minutes = Math.floor(timeRemaining / 60);
                 let seconds = timeRemaining % 60;
+
                 seconds = seconds < 10 ? '0' + seconds : seconds;
+
                 timerElement.textContent = `${minutes}:${seconds}`;
+
                 if (timeRemaining <= 0) {
                     clearInterval(countdown);
                     showThanksMessage();
                 }
+
                 timeRemaining--;
             }, 1000);
         }
 
         userForm.addEventListener('submit', function(event) {
             event.preventDefault();
+
             const phoneNumber = phoneInput.value.replace(/\D/g, '');
             const randomId = generatePersonalId();
             const fullId = `${phoneNumber}_${randomId}`;
             personalIdInput.value = fullId;
+
             formNameInput.value = document.getElementById('name').value;
+
             formSubmittedMessage.classList.remove('hidden');
+
             if (whatsappInput.value.trim() === "") {
                 alertMessage.classList.remove('hidden');
             }
+
             setTimeout(function() {
                 formContainer.classList.add('hidden');
                 testContainer.classList.remove('hidden');
                 instruction.classList.remove('hidden');
+
                 header.classList.add('small');
                 header.innerHTML = '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH9d9Ib6rbgzHkNztQ4lQaEqKkxcpNW7yZfA&s" alt="Kitap Simgesi">' + 
                     '<p>AYDA Ankara Yabancı Dil Akademisi | Telefon: +90 (312) 123 45 67 | E-posta: info@aydaakademi.com</p>';
+
                 startCountdown(50 * 60);
+
                 showResultSection();
             }, 2000);
         });
