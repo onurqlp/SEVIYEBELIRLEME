@@ -21,25 +21,20 @@
     section h2{margin:0;padding:12px;font-size:18px;border-bottom:1px solid var(--border);background:#f7f9fc}
     .inner{padding:10px}
 
-    /* Satır: solda içerik, sağda Kopyala veya Aksiyon */
     .row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:8px 0}
     .row + .row{border-top:1px dashed var(--border)}
     .label{font-size:15px;color:#2c3e50}
     .value{font-size:14px;color:#4a5568;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
-    /* Butonlar */
     .btn{appearance:none;min-height:44px;min-width:44px;border:1px solid var(--border);background:#fff;border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer}
     .btn.primary{background:#234078;color:#fff;border-color:#234078}
     .btn.ghost{background:#fff}
     .btn.wide{width:100%}
 
-    /* Detay kutuları (Banka/Şirket) */
     .details{display:none;margin-top:8px;border:1px dashed var(--border);border-radius:12px;background:#fff}
     .details pre{margin:0;padding:12px 14px;font:15px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap}
-    /* Erişilebilirlik */
-    @media (prefers-reduced-motion: reduce){*{scroll-behavior:auto}}
 
-    /* Küçük ekran iyileştirmeleri */
+    @media (prefers-reduced-motion: reduce){*{scroll-behavior:auto}}
     @media (max-width:420px){
       .row{grid-template-columns:1fr auto}
       .label{font-size:14px}
@@ -47,7 +42,6 @@
       section h2{font-size:16px}
     }
 
-    /* Mini toast */
     .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;background:#111;color:#fff;padding:10px 14px;border-radius:12px;opacity:0;pointer-events:none;transition:.2s;font-weight:700}
     .toast.show{opacity:1}
   </style>
@@ -59,41 +53,46 @@
   </header>
 
   <main class="container">
-    <!-- Seviye Form Linkleri (buton yoktu, sadece kopya butonları) -->
+
+    <!-- Seviye Form Linkleri -->
     <section aria-labelledby="sec-forms">
       <h2 id="sec-forms">Seviye Form Linkleri</h2>
       <div class="inner">
         <div class="row">
           <div>
-            <div class="label">A1 form</div>
+            <div class="label">A1 Form</div>
             <div class="value">https://forms.gle/TFFzbHqzX1NsZkxz6</div>
           </div>
           <button class="btn" data-copy="https://forms.gle/TFFzbHqzX1NsZkxz6">Kopyala</button>
         </div>
+
         <div class="row">
           <div>
-            <div class="label">A2 form</div>
+            <div class="label">A2 Form</div>
             <div class="value">https://forms.gle/cjnptbAmLdpynucUA</div>
           </div>
           <button class="btn" data-copy="https://forms.gle/cjnptbAmLdpynucUA">Kopyala</button>
         </div>
+
         <div class="row">
           <div>
-            <div class="label">B1 form</div>
+            <div class="label">B1 Form</div>
             <div class="value">https://forms.gle/zmCTKALRRzAPTkts8</div>
           </div>
           <button class="btn" data-copy="https://forms.gle/zmCTKALRRzAPTkts8">Kopyala</button>
         </div>
+
         <div class="row">
           <div>
-            <div class="label">B2 sayfa</div>
+            <div class="label">B2 Sayfa</div>
             <div class="value">B2seviye.html</div>
           </div>
           <button class="btn" data-copy="B2seviye.html">Kopyala</button>
         </div>
+
         <div class="row">
           <div>
-            <div class="label">C1 sayfa</div>
+            <div class="label">C1 Sayfa</div>
             <div class="value">C1seviye.html</div>
           </div>
           <button class="btn" data-copy="C1seviye.html">Kopyala</button>
@@ -101,10 +100,11 @@
       </div>
     </section>
 
-    <!-- Video Linkleri (sadece kopyala) -->
+    <!-- Örnek Ders Linkleri -->
     <section aria-labelledby="sec-videos">
       <h2 id="sec-videos">Örnek Ders Linkleri</h2>
       <div class="inner">
+
         <div class="row">
           <div>
             <div class="label">A1 Giriş — Hazal Hoca</div>
@@ -112,6 +112,7 @@
           </div>
           <button class="btn" data-copy="https://youtu.be/GQXJpXrmkw4?si=NH9CAysmgoN6TRmR">Kopyala</button>
         </div>
+
         <div class="row">
           <div>
             <div class="label">A1 Yazılı Stratejiler — Hazal Hoca</div>
@@ -119,23 +120,41 @@
           </div>
           <button class="btn" data-copy="https://youtu.be/Bf_dFaipnkU?si=xTjF2QiOpCvberr_">Kopyala</button>
         </div>
+
         <div class="row">
           <div>
-            <div class="label">Konuşma Dersi Örneği — Tuba Hoca</div>
+            <div class="label">Konuşma Dersi — Tuba Hoca</div>
             <div class="value">https://youtu.be/Nh2sRSIClOA?si=GmJLQbQoGHpJ6lpD</div>
           </div>
           <button class="btn" data-copy="https://youtu.be/Nh2sRSIClOA?si=GmJLQbQoGHpJ6lpD">Kopyala</button>
         </div>
+
+        <div class="row">
+          <div>
+            <div class="label">Ders Örneği — Gizem Hoca</div>
+            <div class="value">https://youtu.be/tBvloSHeIqo</div>
+          </div>
+          <button class="btn" data-copy="https://youtu.be/tBvloSHeIqo">Kopyala</button>
+        </div>
+
+        <div class="row">
+          <div>
+            <div class="label">Ders Örneği — Ceyda Hoca</div>
+            <div class="value">https://youtu.be/cAC5EkvtfGQ</div>
+          </div>
+          <button class="btn" data-copy="https://youtu.be/cAC5EkvtfGQ">Kopyala</button>
+        </div>
+
       </div>
     </section>
 
-    <!-- Fiyat Listesi: Resmi indir -->
+    <!-- Fiyat Listesi -->
     <section aria-labelledby="sec-price">
       <h2 id="sec-price">Fiyat Listesi (Resim İndir)</h2>
       <div class="inner">
         <div class="row">
           <div>
-            <div class="label">Görsel bağlantısı</div>
+            <div class="label">Görsel Bağlantısı</div>
             <div class="value">https://r.resimlink.com/xmi5zV0Qjbk_.jpeg</div>
           </div>
           <button class="btn primary" id="btnPrice" data-src="https://r.resimlink.com/LRi8sD.png">Resmi İndir</button>
@@ -157,11 +176,12 @@
             <button class="btn primary" data-copy-el="#bankText">Kopyala</button>
           </div>
         </div>
+
         <div class="details" id="bankDetails" hidden>
           <pre id="bankText">TR76 0006 2000 4110 0006 2883 30
 Sami Onuralp Özkan Esra Çalt Adi Ortaklığı
 Garanti Bankası
-Açıklamaya en az tam isminizi ve telefon numaranızı yazınız lütfen!</pre>
+Açıklamaya tam isminizi ve telefon numaranızı yazınız.</pre>
         </div>
       </div>
     </section>
@@ -180,67 +200,67 @@ Açıklamaya en az tam isminizi ve telefon numaranızı yazınız lütfen!</pre>
             <button class="btn primary" data-copy-el="#corpText">Kopyala</button>
           </div>
         </div>
+
         <div class="details" id="corpDetails" hidden>
           <pre id="corpText">Şirket İsmi: Sami Onuralp Özkan ve Esra Çalt Adi Ortaklığı
-Vergino: 7421166532
-Vergi Dairesi: Mithatpaşa Vergi Dairesi
+Vergi No: 7421166532
+Vergi Dairesi: Mithatpaşa VD
 Adres: Kızılay Mah. Necatibey Cad. 17/7 Çankaya Ankara</pre>
         </div>
       </div>
     </section>
+
   </main>
 
   <div class="toast" id="toast" role="status" aria-live="polite">Kopyalandı</div>
 
   <script>
-    // Basit toast
     function toast(msg="Kopyalandı"){
       const t=document.getElementById('toast');
       t.textContent=msg; t.classList.add('show');
       clearTimeout(window._t); window._t=setTimeout(()=>t.classList.remove('show'),1000);
     }
 
-    // Metin kopyalama
     function copyText(text){
       if(!text) return;
       if(navigator.clipboard && window.isSecureContext){
         navigator.clipboard.writeText(text).then(()=>toast());
       }else{
-        const ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta);
-        ta.select(); try{document.execCommand('copy');}catch(e){} ta.remove(); toast();
+        const ta=document.createElement('textarea'); ta.value=text;
+        document.body.appendChild(ta); ta.select();
+        try{document.execCommand('copy');}catch(e){}
+        ta.remove(); toast();
       }
     }
 
-    // Element içeriğini kopyala
     function copyFromEl(selector){
       const el=document.querySelector(selector);
       if(el) copyText(el.innerText.trim());
     }
 
-    // Delegasyon
     document.addEventListener('click',e=>{
       const btnCopy=e.target.closest('[data-copy]');
-      if(btnCopy){ copyText(btnCopy.getAttribute('data-copy')); }
+      if(btnCopy) copyText(btnCopy.dataset.copy);
 
       const btnCopyEl=e.target.closest('[data-copy-el]');
-      if(btnCopyEl){ copyFromEl(btnCopyEl.getAttribute('data-copy-el')); }
+      if(btnCopyEl) copyFromEl(btnCopyEl.dataset.copyEl);
 
       const toggle=e.target.closest('[data-toggle]');
       if(toggle){
-        const sel=toggle.getAttribute('data-toggle');
+        const sel=toggle.dataset.toggle;
         const box=document.querySelector(sel);
-        if(box){ const isHidden=box.hasAttribute('hidden');
+        if(box){
+          const isHidden = box.hasAttribute('hidden');
           box.toggleAttribute('hidden', !isHidden);
           box.style.display = isHidden ? 'block' : 'none';
         }
       }
     });
 
-    // Fiyat görselini indir (CORS engelinde yeni sekme)
     async function downloadImage(url, filename="ayda-fiyat-listesi.jpeg"){
       try{
         const res = await fetch(url,{mode:'cors'});
-        if(!res.ok) throw new Error('HTTP not ok');
+        if(!res.ok) throw new Error('http');
         const blob = await res.blob();
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
@@ -253,10 +273,10 @@ Adres: Kızılay Mah. Necatibey Cad. 17/7 Çankaya Ankara</pre>
         window.open(url, '_blank', 'noopener,noreferrer');
       }
     }
-    document.getElementById('btnPrice')?.addEventListener('click', (e)=>{
-      const src=e.currentTarget.getAttribute('data-src');
-      downloadImage(src);
+    document.getElementById('btnPrice')?.addEventListener('click', e=>{
+      downloadImage(e.currentTarget.dataset.src);
     });
   </script>
+
 </body>
 </html>
