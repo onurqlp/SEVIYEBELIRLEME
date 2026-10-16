@@ -1,291 +1,117 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AYDA · Yardım Deposu</title>
-  <meta name="theme-color" content="#234078" />
-  <style>
-    :root{
-      --ayda:#234078; --bg:#ffffff; --ink:#111; --muted:#5b667a; --border:rgba(0,0,0,.12);
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
-    .container{max-width:860px;margin:0 auto;padding:16px 12px 24px}
-
-    header{background:#234078;color:#fff;padding:16px 12px}
-    header h1{margin:0;font-size:clamp(18px,4.8vw,22px)}
-    header p{margin:4px 0 0;opacity:.9;font-size:clamp(12px,3.5vw,14px)}
-
-    section{border:1px solid var(--border);border-radius:14px;margin:10px 0}
-    section h2{margin:0;padding:12px;font-size:18px;border-bottom:1px solid var(--border);background:#f7f9fc}
-    .inner{padding:10px}
-
-    .row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:8px 0}
-    .row + .row{border-top:1px dashed var(--border)}
-    .label{font-size:15px;color:#2c3e50}
-    .value{font-size:14px;color:#4a5568;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-
-    .btn{appearance:none;min-height:44px;min-width:44px;border:1px solid var(--border);background:#fff;border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer}
-    .btn.primary{background:#234078;color:#fff;border-color:#234078}
-    .btn.ghost{background:#fff}
-    .btn.wide{width:100%}
-
-    .details{display:none;margin-top:8px;border:1px dashed var(--border);border-radius:12px;background:#fff}
-    .details pre{margin:0;padding:12px 14px;font:15px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap}
-
-    @media (prefers-reduced-motion: reduce){*{scroll-behavior:auto}}
-    @media (max-width:420px){
-      .row{grid-template-columns:1fr auto}
-      .label{font-size:14px}
-      .value{font-size:13px}
-      section h2{font-size:16px}
-    }
-
-    .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;background:#111;color:#fff;padding:10px 14px;border-radius:12px;opacity:0;pointer-events:none;transition:.2s;font-weight:700}
-    .toast.show{opacity:1}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#102541">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="AYDA Dil Akademisi seviye belirleme sınav bağlantıları.">
+<title>AYDA | Seviye Belirleme Bağlantıları</title>
+<style>
+:root{--navy:#102541;--navy2:#1b3a56;--gold:#e8c37b;--paper:#fbf9f5;--border:#e8e6e1;--muted:#647185;--ink:#182a42}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.55 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+.page{max-width:1080px;margin:auto;padding:20px 18px 50px}
+.hero{background:linear-gradient(130deg,#102541,#254762);color:#fff;border:1px solid rgba(232,195,123,.25);border-radius:24px;padding:28px 32px 32px;box-shadow:0 16px 42px rgba(16,37,65,.10)}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.mark{display:grid;place-items:center;width:43px;height:43px;border-radius:13px;background:var(--gold);color:var(--navy);font-size:13px;font-weight:900;letter-spacing:-.5px}
+.brand span{font-size:13px;letter-spacing:.07em;font-weight:750;text-transform:uppercase;color:#e7edf2}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:750;margin:0 0 6px}
+h1{font-size:clamp(26px,4vw,41px);line-height:1.12;letter-spacing:-.9px;margin:0 0 12px}
+.hero p:last-child{max-width:600px;color:#e4e8ec;margin:0;font-size:15px}
+.topline{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;margin:28px 0 14px}
+.topline h2{font-size:19px;letter-spacing:-.35px;margin:0}
+.counter{border:1px solid #e2ddd2;background:#fff;border-radius:99px;padding:6px 12px;font-size:12px;color:var(--muted);font-weight:750}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.exam-card{background:#fff;border:1px solid var(--border);border-radius:19px;padding:20px;min-width:0;box-shadow:0 8px 22px rgba(16,37,65,.035)}
+.card-top{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:17px}
+.level{background:var(--navy);color:var(--gold);display:grid;place-items:center;min-width:47px;height:43px;border-radius:11px;font-size:16px;font-weight:850}
+.type{font-size:11px;color:#48627d;border-radius:99px;padding:5px 10px;background:#f0f4f7;font-weight:750}
+.exam-card h2{font-size:19px;letter-spacing:-.4px;margin:0 0 2px}
+.exam-card p{color:var(--muted);margin:0 0 14px;font-size:13px}
+.url{border-radius:9px;background:#f7f8fa;border:1px solid #edf0f3;color:#66758a;padding:10px 12px;overflow-wrap:anywhere;font-size:12px;line-height:1.45;min-height:54px}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:13px}
+.open,.copy{display:flex;align-items:center;justify-content:center;gap:7px;border-radius:10px;min-height:44px;border:1px solid var(--navy);padding:9px 10px;font-size:13px;font-weight:750;text-align:center}
+.open{background:var(--navy);color:white}
+.copy{background:white;color:var(--navy)}
+.open:hover{background:#254762}
+.copy:hover{background:#f7f8fa}
+.back{display:inline-flex;align-items:center;gap:8px;margin-top:22px;color:var(--navy);font-size:13px;font-weight:750;padding:10px 2px}
+.footer{margin-top:20px;color:#7b8796;font-size:12px}
+.toast{position:fixed;bottom:max(20px,env(safe-area-inset-bottom));left:50%;transform:translate(-50%,18px);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;background:#102541;color:#fff;padding:12px 18px;border-radius:12px;box-shadow:0 10px 40px #0002;font-weight:750}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+@media(max-width:680px){.page{padding:10px 10px 32px}.hero{padding:20px 18px 24px;border-radius:19px}.brand{margin-bottom:23px}.grid{grid-template-columns:1fr;gap:10px}.exam-card{padding:16px}.topline{margin-top:22px}.actions{gap:8px}}
+@media(max-width:360px){.actions{grid-template-columns:1fr}.url{min-height:0}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+</style>
 </head>
 <body>
-  <header>
-    <h1>AYDA Yardım Deposu</h1>
-    <p>İç kullanım · Gerektiğinde hızlıca kopyalayın / indirin</p>
-  </header>
-
-  <main class="container">
-
-    <!-- Seviye Form Linkleri -->
-    <section aria-labelledby="sec-forms">
-      <h2 id="sec-forms">Seviye Form Linkleri</h2>
-      <div class="inner">
-        <div class="row">
-          <div>
-            <div class="label">A1 Form</div>
-            <div class="value">https://forms.gle/TFFzbHqzX1NsZkxz6</div>
-          </div>
-          <button class="btn" data-copy="https://forms.gle/TFFzbHqzX1NsZkxz6">Kopyala</button>
-        </div>
-
-        <div class="row">
-          <div>
-            <div class="label">A2 Form</div>
-            <div class="value">https://forms.gle/cjnptbAmLdpynucUA</div>
-          </div>
-          <button class="btn" data-copy="https://forms.gle/cjnptbAmLdpynucUA">Kopyala</button>
-        </div>
-
-        <div class="row">
-          <div>
-            <div class="label">B1 Form</div>
-            <div class="value">https://forms.gle/zmCTKALRRzAPTkts8</div>
-          </div>
-          <button class="btn" data-copy="https://forms.gle/zmCTKALRRzAPTkts8">Kopyala</button>
-        </div>
-
-        <div class="row">
-          <div>
-            <div class="label">B2 Sayfa</div>
-            <div class="value">B2seviye.html</div>
-          </div>
-          <button class="btn" data-copy="B2seviye.html">Kopyala</button>
-        </div>
-
-        <div class="row">
-          <div>
-            <div class="label">C1 Sayfa</div>
-            <div class="value">C1seviye.html</div>
-          </div>
-          <button class="btn" data-copy="C1seviye.html">Kopyala</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Örnek Ders Linkleri -->
-<section aria-labelledby="sec-videos">
-  <h2 id="sec-videos">Örnek Ders Linkleri</h2>
-  <div class="inner">
-
-    <div class="row">
-      <div>
-        <div class="label">A1 Giriş — Hazal Hoca</div>
-        <div class="value">https://youtu.be/GQXJpXrmkw4?si=NH9CAysmgoN6TRmR</div>
-      </div>
-      <button class="btn" data-copy="https://youtu.be/GQXJpXrmkw4?si=NH9CAysmgoN6TRmR">Kopyala</button>
-    </div>
-
-    <div class="row">
-      <div>
-        <div class="label">A1 Yazılı Stratejiler — Hazal Hoca</div>
-        <div class="value">https://youtu.be/Bf_dFaipnkU?si=xTjF2QiOpCvberr_</div>
-      </div>
-      <button class="btn" data-copy="https://youtu.be/Bf_dFaipnkU?si=xTjF2QiOpCvberr_">Kopyala</button>
-    </div>
-
-    <div class="row">
-      <div>
-        <div class="label">Konuşma Dersi — Tuba Hoca</div>
-        <div class="value">https://youtu.be/Nh2sRSIClOA?si=GmJLQbQoGHpJ6lpD</div>
-      </div>
-      <button class="btn" data-copy="https://youtu.be/Nh2sRSIClOA?si=GmJLQbQoGHpJ6lpD">Kopyala</button>
-    </div>
-
-    <div class="row">
-      <div>
-        <div class="label">Ders Örneği — Gizem Hoca</div>
-        <div class="value">https://youtu.be/tBvloSHeIqo</div>
-      </div>
-      <button class="btn" data-copy="https://youtu.be/tBvloSHeIqo">Kopyala</button>
-    </div>
-
-    <div class="row">
-      <div>
-        <div class="label">Ders Örneği — Şeyda Hoca</div>
-        <div class="value">https://youtu.be/JYtBwqit6sA</div>
-      </div>
-      <button class="btn" data-copy="https://youtu.be/JYtBwqit6sA">Kopyala</button>
-    </div>
-
-    <div class="row">
-      <div>
-        <div class="label">Ders Örneği — Ceyda Hoca</div>
-        <div class="value">https://youtu.be/cAC5EkvtfGQ</div>
-      </div>
-      <button class="btn" data-copy="https://youtu.be/cAC5EkvtfGQ">Kopyala</button>
-    </div>
-
-  </div>
+<main class="page">
+<header class="hero">
+ <div class="brand"><span class="mark">AYDA</span><span>AYDA Dil Akademisi</span></div>
+ <p class="eyebrow">Sınav Bağlantı Merkezi</p>
+ <h1>Seviye belirleme<br>bağlantıları</h1>
+ <p>Öğrenciye göndereceğiniz sınav linkini seçin. Tek dokunuşla açın veya bağlantıyı kopyalayın.</p>
+</header>
+<div class="topline"><h2>Seviyeler</h2><span class="counter">5 sınav bağlantısı · A1–C1</span></div>
+<section class="grid" aria-label="Seviye belirleme sınav bağlantıları">
+<article class="exam-card" aria-label="A1 sınav bağlantısı">
+  <div class="card-top"><span class="level">A1</span><span class="type">Google Form</span></div>
+  <h2>A1 Seviye Belirleme</h2>
+  <p>A1 seviye belirleme formu</p>
+  <div class="url" title="https://forms.gle/TFFzbHqzX1NsZkxz6">https://forms.gle/TFFzbHqzX1NsZkxz6</div>
+  <div class="actions"><a class="open" href="https://forms.gle/TFFzbHqzX1NsZkxz6" target="_blank" rel="noopener noreferrer" aria-label="A1 bağlantısını aç">Sınavı Aç <span aria-hidden="true">↗</span></a>
+  <button class="copy" type="button" data-copy="https://forms.gle/TFFzbHqzX1NsZkxz6" aria-label="A1 sınav bağlantısını kopyala">Bağlantıyı Kopyala</button></div>
+</article>
+<article class="exam-card" aria-label="A2 sınav bağlantısı">
+  <div class="card-top"><span class="level">A2</span><span class="type">Google Form</span></div>
+  <h2>A2 Seviye Belirleme</h2>
+  <p>A2 seviye belirleme formu</p>
+  <div class="url" title="https://forms.gle/cjnptbAmLdpynucUA">https://forms.gle/cjnptbAmLdpynucUA</div>
+  <div class="actions"><a class="open" href="https://forms.gle/cjnptbAmLdpynucUA" target="_blank" rel="noopener noreferrer" aria-label="A2 bağlantısını aç">Sınavı Aç <span aria-hidden="true">↗</span></a>
+  <button class="copy" type="button" data-copy="https://forms.gle/cjnptbAmLdpynucUA" aria-label="A2 sınav bağlantısını kopyala">Bağlantıyı Kopyala</button></div>
+</article>
+<article class="exam-card" aria-label="B1 sınav bağlantısı">
+  <div class="card-top"><span class="level">B1</span><span class="type">Google Form</span></div>
+  <h2>B1 Seviye Belirleme</h2>
+  <p>B1 seviye belirleme formu</p>
+  <div class="url" title="https://forms.gle/zmCTKALRRzAPTkts8">https://forms.gle/zmCTKALRRzAPTkts8</div>
+  <div class="actions"><a class="open" href="https://forms.gle/zmCTKALRRzAPTkts8" target="_blank" rel="noopener noreferrer" aria-label="B1 bağlantısını aç">Sınavı Aç <span aria-hidden="true">↗</span></a>
+  <button class="copy" type="button" data-copy="https://forms.gle/zmCTKALRRzAPTkts8" aria-label="B1 sınav bağlantısını kopyala">Bağlantıyı Kopyala</button></div>
+</article>
+<article class="exam-card" aria-label="B2 sınav bağlantısı">
+  <div class="card-top"><span class="level">B2</span><span class="type">Sınav Sayfası</span></div>
+  <h2>B2 Seviye Belirleme</h2>
+  <p>B2 seviye belirleme sayfası</p>
+  <div class="url" title="https://onurqlp.github.io/SEVIYEBELIRLEME/B2seviye.html">https://onurqlp.github.io/SEVIYEBELIRLEME/B2seviye.html</div>
+  <div class="actions"><a class="open" href="https://onurqlp.github.io/SEVIYEBELIRLEME/B2seviye.html" target="_blank" rel="noopener noreferrer" aria-label="B2 bağlantısını aç">Sınavı Aç <span aria-hidden="true">↗</span></a>
+  <button class="copy" type="button" data-copy="https://onurqlp.github.io/SEVIYEBELIRLEME/B2seviye.html" aria-label="B2 sınav bağlantısını kopyala">Bağlantıyı Kopyala</button></div>
+</article>
+<article class="exam-card" aria-label="C1 sınav bağlantısı">
+  <div class="card-top"><span class="level">C1</span><span class="type">Sınav Sayfası</span></div>
+  <h2>C1 Seviye Belirleme</h2>
+  <p>C1 seviye belirleme sayfası</p>
+  <div class="url" title="https://onurqlp.github.io/SEVIYEBELIRLEME/C1seviye.html">https://onurqlp.github.io/SEVIYEBELIRLEME/C1seviye.html</div>
+  <div class="actions"><a class="open" href="https://onurqlp.github.io/SEVIYEBELIRLEME/C1seviye.html" target="_blank" rel="noopener noreferrer" aria-label="C1 bağlantısını aç">Sınavı Aç <span aria-hidden="true">↗</span></a>
+  <button class="copy" type="button" data-copy="https://onurqlp.github.io/SEVIYEBELIRLEME/C1seviye.html" aria-label="C1 sınav bağlantısını kopyala">Bağlantıyı Kopyala</button></div>
+</article>
 </section>
-
-
-    <!-- Fiyat Listesi -->
-    <section aria-labelledby="sec-price">
-      <h2 id="sec-price">Fiyat Listesi (Resim İndir)</h2>
-      <div class="inner">
-        <div class="row">
-          <div>
-            <div class="label">Görsel Bağlantısı</div>
-            <div class="value">https://r.resimlink.com/xmi5zV0Qjbk_.jpeg</div>
-          </div>
-          <button class="btn primary" id="btnPrice" data-src="https://r.resimlink.com/LRi8sD.png">Resmi İndir</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Banka Bilgileri -->
-    <section aria-labelledby="sec-bank">
-      <h2 id="sec-bank">Banka Bilgileri</h2>
-      <div class="inner">
-        <div class="row">
-          <div>
-            <div class="label">IBAN · Banka · Açıklama</div>
-            <div class="value">TR76 0006 2000 4110 0006 2883 30 · Garanti</div>
-          </div>
-          <div style="display:flex;gap:8px">
-            <button class="btn ghost" data-toggle="#bankDetails">Göster</button>
-            <button class="btn primary" data-copy-el="#bankText">Kopyala</button>
-          </div>
-        </div>
-
-        <div class="details" id="bankDetails" hidden>
-          <pre id="bankText">TR76 0006 2000 4110 0006 2883 30
-Sami Onuralp Özkan Esra Çalt Adi Ortaklığı
-Garanti Bankası
-Açıklamaya tam isminizi ve telefon numaranızı yazınız.</pre>
-        </div>
-      </div>
-    </section>
-
-    <!-- Şirket Bilgileri -->
-    <section aria-labelledby="sec-corp">
-      <h2 id="sec-corp">Şirket Bilgileri</h2>
-      <div class="inner">
-        <div class="row">
-          <div>
-            <div class="label">Ünvan · Vergi No · Daire · Adres</div>
-            <div class="value">Sami Onuralp Özkan ve Esra Çalt Adi Ortaklığı · 7421166532 · Mithatpaşa VD</div>
-          </div>
-          <div style="display:flex;gap:8px">
-            <button class="btn ghost" data-toggle="#corpDetails">Göster</button>
-            <button class="btn primary" data-copy-el="#corpText">Kopyala</button>
-          </div>
-        </div>
-
-        <div class="details" id="corpDetails" hidden>
-          <pre id="corpText">Şirket İsmi: Sami Onuralp Özkan ve Esra Çalt Adi Ortaklığı
-Vergi No: 7421166532
-Vergi Dairesi: Mithatpaşa VD
-Adres: Kızılay Mah. Necatibey Cad. 17/7 Çankaya Ankara</pre>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <div class="toast" id="toast" role="status" aria-live="polite">Kopyalandı</div>
-
-  <script>
-    function toast(msg="Kopyalandı"){
-      const t=document.getElementById('toast');
-      t.textContent=msg; t.classList.add('show');
-      clearTimeout(window._t); window._t=setTimeout(()=>t.classList.remove('show'),1000);
-    }
-
-    function copyText(text){
-      if(!text) return;
-      if(navigator.clipboard && window.isSecureContext){
-        navigator.clipboard.writeText(text).then(()=>toast());
-      }else{
-        const ta=document.createElement('textarea'); ta.value=text;
-        document.body.appendChild(ta); ta.select();
-        try{document.execCommand('copy');}catch(e){}
-        ta.remove(); toast();
-      }
-    }
-
-    function copyFromEl(selector){
-      const el=document.querySelector(selector);
-      if(el) copyText(el.innerText.trim());
-    }
-
-    document.addEventListener('click',e=>{
-      const btnCopy=e.target.closest('[data-copy]');
-      if(btnCopy) copyText(btnCopy.dataset.copy);
-
-      const btnCopyEl=e.target.closest('[data-copy-el]');
-      if(btnCopyEl) copyFromEl(btnCopyEl.dataset.copyEl);
-
-      const toggle=e.target.closest('[data-toggle]');
-      if(toggle){
-        const sel=toggle.dataset.toggle;
-        const box=document.querySelector(sel);
-        if(box){
-          const isHidden = box.hasAttribute('hidden');
-          box.toggleAttribute('hidden', !isHidden);
-          box.style.display = isHidden ? 'block' : 'none';
-        }
-      }
-    });
-
-    async function downloadImage(url, filename="ayda-fiyat-listesi.jpeg"){
-      try{
-        const res = await fetch(url,{mode:'cors'});
-        if(!res.ok) throw new Error('http');
-        const blob = await res.blob();
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = filename;
-        document.body.appendChild(link);
-        link.click();
-        URL.revokeObjectURL(link.href);
-        link.remove();
-      }catch(err){
-        window.open(url, '_blank', 'noopener,noreferrer');
-      }
-    }
-    document.getElementById('btnPrice')?.addEventListener('click', e=>{
-      downloadImage(e.currentTarget.dataset.src);
-    });
-  </script>
-
+<a class="back" href="https://onurqlp.github.io/linkler/">← Yönetici link paneline dön</a>
+<p class="footer">AYDA Dil Akademisi · Yönetim amaçlı bağlantı listesi. Form ve sınav içerikleri kendi bağlantılarında açılır.</p>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+ let toastTimeout;
+ const toast=document.getElementById('toast');
+ function showToast(message){toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>toast.classList.remove('show'),1900);}
+ function fallback(text){const input=document.createElement('textarea');input.value=text;input.setAttribute('readonly','');input.style.position='fixed';input.style.left='-9999px';document.body.appendChild(input);input.select();let ok=false;try{ok=document.execCommand('copy');}catch(e){}input.remove();return ok;}
+ document.addEventListener('click',async function(ev){const btn=ev.target.closest('button[data-copy]');if(!btn)return;const value=btn.dataset.copy;let ok=false;if(navigator.clipboard && window.isSecureContext){try{await navigator.clipboard.writeText(value);ok=true;}catch(e){ok=fallback(value);}}else{ok=fallback(value);}showToast(ok?'Sınav bağlantısı kopyalandı':'Kopyalanamadı; bağlantıyı seçip kopyalayın.');});
+})();
+</script>
 </body>
 </html>
